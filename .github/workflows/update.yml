@@ -2,8 +2,8 @@ name: Update Gold Data
 
 on:
   schedule:
-    - cron: '15 7 * * *'
-    - cron: '30 7 * * *'
+    - cron: '15 7 * * *'   # 12:45 PM IST
+    - cron: '30 7 * * *'   # 1:00 PM IST
   workflow_dispatch:
 
 jobs:
@@ -20,12 +20,11 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install axios @octokit/rest dotenv
-
-      - name: Debug env
-        run: echo $GITHUB_TOKEN
+        run: npm install axios @octokit/rest@18 dotenv
 
       - name: Run script
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-        run: node updateGoldData.js
+        run: |
+          echo "Starting script..."
+          node updateGoldData.js
