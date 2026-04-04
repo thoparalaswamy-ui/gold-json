@@ -1,0 +1,28 @@
+name: Update Gold Data
+
+on:
+  schedule:
+    - cron: '15 7 * * *'   # 12:45 PM IST
+    - cron: '30 7 * * *'   # 1:00 PM IST
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install axios @octokit/rest
+
+      - name: Run script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node updateGoldData.js
