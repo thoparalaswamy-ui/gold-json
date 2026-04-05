@@ -3,7 +3,7 @@ name: Update Gold Data
 on:
   schedule:
     - cron: '15 7 * * *'   # 12:45 PM IST
-    - cron: '30 7 * * *'   # 1:00 PM IST
+    - cron: '0 8 * * *'    # 1:30 PM IST
   workflow_dispatch:
 
 jobs:
@@ -17,14 +17,20 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: '18'
 
       - name: Install dependencies
-        run: npm install axios @octokit/rest@18 dotenv
+        run: npm install
 
       - name: Run script
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: node updateGoldData.js
+
+      # ✅ THIS IS THE MISSING PART
+      - name: Commit & Push changes
         run: |
-          echo "Starting script..."
-          node updateGoldData.js
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          git add .
+          git commit -m "Auto update gold data" || echo "No changes"
+          git push
