@@ -2,8 +2,8 @@ name: Update Gold Data
 
 on:
   schedule:
-    - cron: '15 7 * * *'
-    - cron: '0 8 * * *'
+    - cron: '10 7 * * *'
+    - cron: '50 7 * * *'
   workflow_dispatch:
 
 jobs:
