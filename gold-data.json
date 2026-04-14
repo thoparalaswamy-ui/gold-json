@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-04-14T12:57:47.366Z",
+  "updatedAt": "2026-04-14T14:30:00.000Z",
   "data": {
     "visakhapatnam": {
       "today": {
         "date": "2026-04-14",
         "city": "visakhapatnam",
-        "gold24": 158059.2,
-        "gold22": 159072.4,
-        "silver": 303960
+        "gold24": 203045.28,
+        "gold22": 259072.4,
+        "silver": 403960
       },
       "last7Days": [
         {
