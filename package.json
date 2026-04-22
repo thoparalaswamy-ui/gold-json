@@ -4,7 +4,7 @@
   "description": "Gold price auto update",
   "main": "updateGoldData.js",
   "dependencies": {
-    "axios": "^1.15.1",
+    "axios": "^1.15.2",
     "csv-parser": "^3.2.0"
   },
   "scripts": {
